@@ -1,0 +1,30 @@
+<html> 
+<head> 
+    <script type="text/javascript" src="jquery/js/jquery-1.6.2.min.js"></script> 
+    <script type="text/javascript" src="jquery/plugins/jquery.form.js"></script> 
+ 
+    <script type="text/javascript"> 
+        // wait for the DOM to be loaded 
+        $(document).ready(function() {
+			var options = { 
+				type: "POST",
+				target:     '#uploadDiv', 
+				url:        'ajax/upload_document.php?eventid=8',
+				iframe: true,
+				success:    function(data) { 
+					alert(data); 
+				},
+			}; 
+			// bind 'uploadForm' and provide a simple callback function 
+            $('#uploadForm').ajaxForm(options); 
+		}); 
+    </script> 
+</head>
+
+<form id="uploadForm" action="ajax/upload_document.php" method="post"> 
+    Name: <input type="text" name="name" />
+	File: <input type="file" name="userfile" />
+    Comment: <textarea name="comment"></textarea> 
+    <input type="submit" value="Submit Comment" /> 
+</form>
+<div id='uploadDiv'></div>
